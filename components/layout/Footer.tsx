@@ -62,7 +62,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectAlgorithm }) => {
         </div>
       </div>
       <div className="bg-background-primary py-4 text-center text-xs border-t border-border">
-        <p>&copy; {new Date().getFullYear()} CSLab. Built with ❤️ for education.</p>
+        <p>&copy; {new Date().getFullYear()} CSLab. Build by Fahim for education.</p>
       </div>
     </footer>
   );
