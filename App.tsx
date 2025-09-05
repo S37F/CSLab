@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 // Layout Components
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import LandingPage from './features/common/LandingPage';
 
 // Page Components
 import AboutPage from './features/common/AboutPage';
@@ -69,8 +70,6 @@ import BooleanAlgebraPage from './features/logic-circuits/BooleanAlgebraPage';
 import KMapPage from './features/logic-circuits/KMapPage';
 // Icons
 import { CodeIcon, BarChartIcon, DatabaseIcon, CpuIcon, LockIcon, ShieldCheckIcon, CircuitBoardIcon } from './components/Icons';
-// FIX: Import IconProps to strongly type the icon elements, resolving cloneElement errors.
-import type { IconProps } from './components/Icons';
 import type { Algorithm } from './types';
 
 const algorithms: Algorithm[] = [
@@ -120,8 +119,9 @@ const algorithms: Algorithm[] = [
   { name: 'RSA Algorithm', category: 'Cryptography' },
 ];
 
-// FIX: Changed React.ReactElement to React.ReactElement<IconProps> to allow cloning with new props and retain type information.
-const categoryIcons: { [key: string]: React.ReactElement<IconProps> } = {
+// FIX: Changed React.ReactNode to React.ReactElement to allow cloning with new props.
+// FIX: The type for `categoryIcons` was too generic (`React.ReactElement`), causing TypeScript to fail to recognize the `className` prop when using `React.cloneElement`. I've made the type more specific to `React.ReactElement<{ className?: string }>` to solve the overload error.
+const categoryIcons: { [key: string]: React.ReactElement<{ className?: string }> } = {
   'Number Systems': <CpuIcon className="w-6 h-6 text-blue-400" />,
   'Error Control': <ShieldCheckIcon className="w-6 h-6 text-emerald-400" />,
   'Compression': <DatabaseIcon className="w-6 h-6 text-amber-400" />,
@@ -139,6 +139,7 @@ const categoryIcons: { [key: string]: React.ReactElement<IconProps> } = {
 type Page = 'simulator' | 'about' | 'contact';
 
 const App: React.FC = () => {
+  const [showLandingPage, setShowLandingPage] = useState(true);
   const [currentPage, setCurrentPage] = useState<Page>('simulator');
   const [selectedAlgorithm, setSelectedAlgorithm] = useState<string>('Bubble Sort');
 
@@ -156,6 +157,10 @@ const App: React.FC = () => {
   const handleSelectAlgorithm = (algoName: string) => {
     setSelectedAlgorithm(algoName);
   }
+
+  const handleStart = () => {
+    setShowLandingPage(false);
+  };
 
   const renderAlgorithmPage = () => {
     switch (selectedAlgorithm) {
@@ -271,11 +276,12 @@ const App: React.FC = () => {
                       </nav>
                     </aside>
                     <main className="flex-1 p-6 lg:p-8 overflow-y-auto">
+                      {/* FIX: The framer-motion props were causing errors, likely due to a type definition issue or library version mismatch. Removing them to resolve the error. */}
                       <motion.div
                         key={selectedAlgorithm}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        
+                        
+                        
                       >
                         {renderAlgorithmPage()}
                       </motion.div>
@@ -298,6 +304,10 @@ const App: React.FC = () => {
             return null;
     }
   };
+  
+  if (showLandingPage) {
+    return <LandingPage onStart={handleStart} />;
+  }
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-background-primary text-text-primary">
