@@ -27,8 +27,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectAlgorithm }) => {
           </h3>
           <p className="text-sm mb-4">Where Algorithms Come Alive. An interactive platform for visualizing and understanding core computer science concepts.</p>
            <div className="flex space-x-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="hover:text-accent-primary transition-colors"><GithubIcon className="w-6 h-6" /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:text-accent-primary transition-colors"><LinkedinIcon className="w-6 h-6" /></a>
+            <a href="https://github.com/S37F" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="hover:text-accent-primary transition-colors"><GithubIcon className="w-6 h-6" /></a>
+            <a href="https://www.linkedin.com/in/fahim-badgujar-3390842b6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="hover:text-accent-primary transition-colors"><LinkedinIcon className="w-6 h-6" /></a>
            </div>
         </div>
         <div>
