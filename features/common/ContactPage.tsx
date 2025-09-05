@@ -53,25 +53,25 @@ const ContactPage: React.FC<ContactPageProps> = ({ categories }) => {
                         <ContactInfoCard 
                             icon={<MailIcon className="w-6 h-6" />}
                             title="General Inquiries"
-                            email="hello@cslab.dev"
+                            email="fahimbadgujar@outlook.com"
                             description="For general questions and feedback."
                         />
                         <ContactInfoCard 
                             icon={<HeadphonesIcon className="w-6 h-6" />}
                             title="Technical Support"
-                            email="support@cslab.dev"
+                            email="fahimbadguja@outlook.com"
                             description="Report a bug or get help with the simulators."
                         />
                          <ContactInfoCard 
                             icon={<GraduationCapIcon className="w-6 h-6" />}
                             title="Educational Partnerships"
-                            email="partnerships@cslab.dev"
+                            email="fahimbadguja@outlook.com"
                             description="Collaborate with us for educational initiatives."
                         />
                          <ContactInfoCard 
                             icon={<NewspaperIcon className="w-6 h-6" />}
                             title="Press & Media"
-                            email="press@cslab.dev"
+                            email="fahimbadguja@outlook.com"
                             description="Media inquiries and press releases."
                         />
                     </div>
