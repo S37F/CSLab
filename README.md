@@ -50,7 +50,7 @@ This project is a static web application and does not require a complex build pr
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/s37f/CSlab.git
+    git clone https://github.com/s37f/CSLab.git
     cd CSlab
     ```
 
@@ -81,7 +81,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ### Reporting Bugs
 
-If you encounter a bug, please [open an issue](https://github.com/s37f/CSlab/issues) and provide a detailed description of the problem, the steps to reproduce it, and the expected behavior.
+If you encounter a bug, please [open an issue](https://github.com/s37f/CSLab/issues) and provide a detailed description of the problem, the steps to reproduce it, and the expected behavior.
 
 ## 📄 License
 
