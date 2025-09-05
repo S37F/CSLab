@@ -1,7 +1,7 @@
 
 # CSLab: Interactive Computer Science Learning Platform
 
-![CSLab Screenshot](C:\Users\fahim\Downloads\CSLab\CSLab\Screenshot 2025-09-05 185123.png)  <!-- Replace with a real screenshot URL of your application -->
+Screenshot 2025-09-05 185123.png <!-- Replace with a real screenshot URL of your application -->
 
 **CSLab** is a premium, dark-themed educational platform designed to make complex computer science concepts intuitive and engaging. Through a rich collection of interactive calculators and visual simulators, CSLab brings algorithms and data structures to life, bridging the gap between theoretical knowledge and practical understanding.
 
