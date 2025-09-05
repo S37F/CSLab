@@ -11,7 +11,7 @@ const ContactInfoCard: React.FC<{ icon: React.ReactNode, title: string, email: s
             <div className="mr-4 text-accent-primary">{icon}</div>
             <h3 className="text-lg font-semibold text-text-primary">{title}</h3>
         </div>
-        <a href={`mailto:${email}`} className="text-accent-primary hover:underline font-mono text-sm">{email}</a>
+        <a href={`mailto:${fahimbadgujar@outlook.com}`} className="text-accent-primary hover:underline font-mono text-sm">{email}</a>
         <p className="text-text-tertiary text-sm mt-2">{description}</p>
     </div>
 );
