@@ -2,7 +2,7 @@ import React from 'react';
 import { GithubIcon, LinkedinIcon } from '../Icons';
 
 interface FooterProps {
-  onNavigate: (page: 'simulator' | 'about' | 'contact') => void;
+  onNavigate: (page: 'simulator' | 'about' | 'contact' | 'privacy' | 'terms') => void;
   onSelectAlgorithm: (algo: string) => void;
 }
 
@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectAlgorithm }) => {
     window.scrollTo(0, 0); // Scroll to top
   };
   
-  const handlePageClick = (page: 'simulator' | 'about' | 'contact') => {
+  const handlePageClick = (page: 'simulator' | 'about' | 'contact' | 'privacy' | 'terms') => {
     onNavigate(page);
     window.scrollTo(0, 0);
   }
@@ -56,8 +56,8 @@ const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectAlgorithm }) => {
           <ul className="space-y-2 text-sm">
             <li><button onClick={() => handlePageClick('about')} className="hover:text-accent-primary transition-colors">About Us</button></li>
             <li><button onClick={() => handlePageClick('contact')} className="hover:text-accent-primary transition-colors">Contact Us</button></li>
-            <li><button className="hover:text-accent-primary transition-colors">Privacy Policy</button></li>
-            <li><button className="hover:text-accent-primary transition-colors">Terms of Service</button></li>
+            <li><button onClick={() => handlePageClick('privacy')} className="hover:text-accent-primary transition-colors">Privacy Policy</button></li>
+            <li><button onClick={() => handlePageClick('terms')} className="hover:text-accent-primary transition-colors">Terms of Service</button></li>
           </ul>
         </div>
       </div>
