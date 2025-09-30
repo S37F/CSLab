@@ -1,6 +1,8 @@
 
 
 
+
+
 import React, { useState, useMemo, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 
@@ -13,6 +15,8 @@ import LandingPage from './features/common/LandingPage';
 import AboutPage from './features/common/AboutPage';
 import ContactPage from './features/common/ContactPage';
 import CategorySelectionPage from './features/common/CategorySelectionPage';
+import PrivacyPolicyPage from './features/common/PrivacyPolicyPage';
+import TermsOfServicePage from './features/common/TermsOfServicePage';
 
 // Sorting
 import BubbleSortPage from './features/sorting/BubbleSortPage';
@@ -138,7 +142,7 @@ const categoryIcons: { [key: string]: React.ReactElement<{ className?: string }>
   'Logic Circuits': <CircuitBoardIcon className="w-6 h-6 text-teal-400" />,
 };
 
-type Page = 'simulator' | 'about' | 'contact';
+type Page = 'simulator' | 'about' | 'contact' | 'privacy' | 'terms';
 
 const App: React.FC = () => {
   const [showLandingPage, setShowLandingPage] = useState(true);
@@ -464,6 +468,10 @@ const App: React.FC = () => {
             />{footer}</div>;
         case 'contact':
             return <div className="flex-1 overflow-y-auto no-scrollbar"><ContactPage categories={sortedCategories} />{footer}</div>;
+        case 'privacy':
+            return <div className="flex-1 overflow-y-auto no-scrollbar"><PrivacyPolicyPage />{footer}</div>;
+        case 'terms':
+            return <div className="flex-1 overflow-y-auto no-scrollbar"><TermsOfServicePage />{footer}</div>;
         default:
             return null;
     }
