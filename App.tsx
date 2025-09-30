@@ -1,15 +1,12 @@
 
-
-
-
-
-import React, { useState, useMemo, useCallback, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Layout Components
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import LandingPage from './features/common/LandingPage';
+import CommandPalette from './components/CommandPalette';
 
 // Page Components
 import AboutPage from './features/common/AboutPage';
@@ -151,7 +148,19 @@ const App: React.FC = () => {
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const [isDesktopSidebarCollapsed, setIsDesktopSidebarCollapsed] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault();
+        setIsCommandPaletteOpen(open => !open);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const groupedAlgorithms = algorithms.reduce((acc, algo) => {
     (acc[algo.category] = acc[algo.category] || []).push(algo);
@@ -490,7 +499,25 @@ const App: React.FC = () => {
         showSidebarToggle={currentPage === 'simulator'}
         onToggleSidebar={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
         isSidebarOpen={isMobileSidebarOpen}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
       />
+      <AnimatePresence>
+        {isCommandPaletteOpen && (
+          <CommandPalette
+            algorithms={algorithms}
+            onClose={() => setIsCommandPaletteOpen(false)}
+            onSelectAlgorithm={(algoName) => {
+              handleNavigation('simulator');
+              handleSelectAlgorithm(algoName);
+              setIsCommandPaletteOpen(false);
+            }}
+            onSelectPage={(page) => {
+              handleNavigation(page);
+              setIsCommandPaletteOpen(false);
+            }}
+          />
+        )}
+      </AnimatePresence>
       {renderCurrentPage()}
     </div>
   );
