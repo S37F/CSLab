@@ -1,11 +1,12 @@
 import React from 'react';
-import { MenuIcon, XIcon } from '../Icons';
+import { MenuIcon, XIcon, SearchIcon } from '../Icons';
 
 type Page = 'simulator' | 'about' | 'contact' | 'privacy' | 'terms';
 
 interface NavbarProps {
   onNavigate: (page: Page) => void;
   onGoHome: () => void;
+  onOpenCommandPalette: () => void;
   currentPage: Page;
   showSidebarToggle?: boolean;
   onToggleSidebar?: () => void;
@@ -25,7 +26,7 @@ const NavButton: React.FC<{ page: Page, currentPage: Page, onNavigate: (page: Pa
   );
 };
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigate, onGoHome, currentPage, showSidebarToggle = false, onToggleSidebar, isSidebarOpen = false }) => {
+const Navbar: React.FC<NavbarProps> = ({ onNavigate, onGoHome, onOpenCommandPalette, currentPage, showSidebarToggle = false, onToggleSidebar, isSidebarOpen = false }) => {
   return (
     <header className="bg-background-secondary/80 backdrop-blur-sm border-b border-border px-4 lg:px-6 h-16 flex items-center justify-between sticky top-0 z-50 flex-shrink-0">
       <div className="flex items-center gap-4">
@@ -49,8 +50,14 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, onGoHome, currentPage, show
         <NavButton page="about" currentPage={currentPage} onNavigate={onNavigate}>About</NavButton>
         <NavButton page="contact" currentPage={currentPage} onNavigate={onNavigate}>Contact</NavButton>
       </nav>
-       <div className="sm:hidden">
-          {/* Placeholder to balance the flex layout, or could be a different mobile action button */}
+       <div className="flex items-center gap-2">
+          <button 
+            onClick={onOpenCommandPalette}
+            className="p-2 text-text-secondary hover:text-text-primary transition-colors"
+            aria-label="Open command palette"
+          >
+            <SearchIcon className="w-5 h-5" />
+          </button>
        </div>
     </header>
   );
