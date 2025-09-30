@@ -1,7 +1,7 @@
 import React from 'react';
 import { MenuIcon, XIcon } from '../Icons';
 
-type Page = 'simulator' | 'about' | 'contact';
+type Page = 'simulator' | 'about' | 'contact' | 'privacy' | 'terms';
 
 interface NavbarProps {
   onNavigate: (page: Page) => void;
