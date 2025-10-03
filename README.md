@@ -49,8 +49,8 @@ This project is a static web application and does not require a complex build pr
 
 1.  **Clone the repository:**
     ```sh
-    git clone https://github.com/s37f/CSLab.git
-    cd CSlab
+    git clone https://github.com/s37f/CsLaB.git
+    cd CslaB
     ```
 
 2.  **Serve the files:**
